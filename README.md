@@ -32,10 +32,10 @@ Things you may want to cover:
 | nickname                   | string | null: false              |
 | email                      | string | null: false unique: true |
 | encrypted_password         | string | null: false              |
-| last name_full-width       | string | null: false              |
-| first name_full-width      | string | null: false              |
-| last name_kana_full-width  | string | null: false              |
-| first name_kana_full-width | string | null: false              |
+| last_name_full-width       | string | null: false              |
+| first_name_full-width      | string | null: false              |
+| last_name_kana_full-width  | string | null: false              |
+| first_name_kana_full-width | string | null: false              |
 | birthday                   | date | null: false                |
 
 
@@ -53,18 +53,18 @@ has_many :purchases
 | description        | text       | null: false      |
 | category_id           | integer    | null: false      |
 | condition_id       | integer    | null: false      |
-| delivery charge_id | integer    | null: false      |
-| delivery source_id | integer    | null: false      |
-| shipping days_id   | integer    | null: false      |
+| delivery_charge_id | integer    | null: false      |
+| delivery_source_id | integer    | null: false      |
+| shipping_days_id   | integer    | null: false      |
 | price              | integer    | null: false      |
 | user               | references | foreign_key: true|
 
 ### Association
 
-has_one :user
+belongs_to :user
 has_one :purchase
 
-## purchase テーブル
+## purchases
 
 | purchase              | Type       | Options     |
 | --------------------- | -----------| ----------- |
@@ -82,11 +82,11 @@ belongs_to :item
 | shipping address      | Type       | Options           |
 | --------------------- | -----------| ------------------|
 | postal code           | string     | null: false       |
-| delivery source_id    | integer    | null: false       |
+| delivery_source_id    | integer    | null: false       |
 | municipalities        | string     | null: false       |
 | address               | string     | null: false       |
-| building name         | string     |                   |
-| phone number          | string     | null: false       |
+| building_name         | string     |                   |
+| phone_number          | string     | null: false       |
 | purchase              | references | foreign_key: true |
 
 ### Association
