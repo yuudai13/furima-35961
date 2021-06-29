@@ -27,38 +27,37 @@ Things you may want to cover:
 
 ## users テーブル
 
-| users                      | Type   | Options     |
-| ---------------------------| ------ | ----------- |
-| nickname                   | string | null: false |
-| email                      | string | null: false |
-| encrypted_password         | string | null: false |
-| last name_full-width       | string | null: false |
-| first name_full-width      | string | null: false |
-| last name_kana_full-width  | string | null: false |
-| first name_kana_full-width | string | null: false |
-| birthday year              | string | null: false |
-| birthday month             | string | null: false |
-| birthday date              | string | null: false |
+| users                      | Type   | Options                  |
+| ---------------------------| ------ | -----------              |
+| nickname                   | string | null: false              |
+| email                      | string | null: false unique: true |
+| encrypted_password         | string | null: false              |
+| last name_full-width       | string | null: false              |
+| first name_full-width      | string | null: false              |
+| last name_kana_full-width  | string | null: false              |
+| first name_kana_full-width | string | null: false              |
+| birthday                   | date | null: false                |
+
+
 
 ### Association
 
 has_many :items
-has_many :purchase
+has_many :purchases
 
 ### items テーブル
 
-| items              | Type       | Options       |
-| ------------------ | -----------| ----------- |
-| image              | image      | null: false |
-| name               | string     | null: false |
-| description        | text       | null: false |
-| category           | integer    | null: false |
-| condition          | integer    | null: false |
-| delivery charge    | integer    | null: false |
-| delivery source    | integer    | null: false |
-| shipping days      | integer    | null: false |
-| price              | string     | null: false |
-| user               | references |             |
+| items              | Type       | Options          |
+| ------------------ | -----------| -----------------|
+| name               | string     | null: false      |
+| description        | text       | null: false      |
+| category           | integer    | null: false      |
+| condition_id       | integer    | null: false      |
+| delivery charge_id | integer    | null: false      |
+| delivery source_id | integer    | null: false      |
+| shipping days_id   | integer    | null: false      |
+| price              | integer    | null: false      |
+| user               | references | foreign_key: true|
 
 ### Association
 
@@ -68,27 +67,25 @@ has_one  :users
 
 | purchase              | Type       | Options     |
 | --------------------- | -----------| ----------- |
-| credit card           | integer    | null: false |
-| expiration date month | integer    | null: false |
-| expiration date year  | integer    | null: false |
-| security code         | integer    | null: false |
 | user                  | references |             |
+| items                 | references |             |
 
 ### Association
 
 has_one :users
-has_one :purchase  
+has_one :shipping address
+has_many :items  
 
 ## purchase テーブル
 
 | shipping address      | Type       | Options     |
 | --------------------- | -----------| ----------- |
-| postal code           | integer    | null: false |
-| prefectures           | integer    | null: false |
+| postal code           | string     | null: false |
+| delivery source_id    | integer    | null: false |
 | municipalities        | string     | null: false |
 | address               | string     | null: false |
-| building name         | string     | null: false |
-| phone number          | integer    | null: false |
+| building name         | string     |             |
+| phone number          | string     | null: false |
 | purchase              | references |             |
 
 ### Association
