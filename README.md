@@ -51,7 +51,7 @@ has_many :purchases
 | ------------------ | -----------| -----------------|
 | name               | string     | null: false      |
 | description        | text       | null: false      |
-| category           | integer    | null: false      |
+| category_id           | integer    | null: false      |
 | condition_id       | integer    | null: false      |
 | delivery charge_id | integer    | null: false      |
 | delivery source_id | integer    | null: false      |
@@ -61,32 +61,33 @@ has_many :purchases
 
 ### Association
 
-has_one  :users
+has_one :user
+has_one :purchase
 
 ## purchase テーブル
 
 | purchase              | Type       | Options     |
 | --------------------- | -----------| ----------- |
-| user                  | references |             |
-| items                 | references |             |
+| user                  | references | foreign_key: true |
+| item                  | references | foreign_key: true |
 
 ### Association
 
-has_one :users
+has_one :user
 has_one :shipping address
-has_many :items  
+belongs_to :item
 
-## purchase テーブル
+## shipping address テーブル
 
-| shipping address      | Type       | Options     |
-| --------------------- | -----------| ----------- |
-| postal code           | string     | null: false |
-| delivery source_id    | integer    | null: false |
-| municipalities        | string     | null: false |
-| address               | string     | null: false |
-| building name         | string     |             |
-| phone number          | string     | null: false |
-| purchase              | references |             |
+| shipping address      | Type       | Options           |
+| --------------------- | -----------| ------------------|
+| postal code           | string     | null: false       |
+| delivery source_id    | integer    | null: false       |
+| municipalities        | string     | null: false       |
+| address               | string     | null: false       |
+| building name         | string     |                   |
+| phone number          | string     | null: false       |
+| purchase              | references | foreign_key: true |
 
 ### Association
 
