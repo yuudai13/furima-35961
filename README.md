@@ -73,7 +73,7 @@ has_one :purchase
 
 ### Association
 
-has_one :user
+belongs_to :user
 has_one :shipping address
 belongs_to :item
 
@@ -81,7 +81,7 @@ belongs_to :item
 
 | shipping address      | Type       | Options           |
 | --------------------- | -----------| ------------------|
-| postal code           | string     | null: false       |
+| postal_code           | string     | null: false       |
 | delivery_source_id    | integer    | null: false       |
 | municipalities        | string     | null: false       |
 | address               | string     | null: false       |
