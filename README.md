@@ -27,7 +27,7 @@ Things you may want to cover:
 
 ## users テーブル
 
-| users                      | Type   | Options                  |
+| Column                     | Type   | Options                  |
 | ---------------------------| ------ | -----------              |
 | nickname                   | string | null: false              |
 | email                      | string | null: false unique: true |
@@ -47,7 +47,7 @@ has_many :purchases
 
 ### items テーブル
 
-| items              | Type       | Options          |
+| Column             | Type       | Options          |
 | ------------------ | -----------| -----------------|
 | name               | string     | null: false      |
 | description        | text       | null: false      |
@@ -66,7 +66,7 @@ has_one :purchase
 
 ## purchases
 
-| purchase              | Type       | Options           |
+| Column                | Type       | Options           |
 | --------------------- | -----------| ----------------- |
 | user                  | references | foreign_key: true |
 | item                  | references | foreign_key: true |
@@ -77,9 +77,9 @@ belongs_to :user
 has_one :shipping_address
 belongs_to :item
 
-## shipping_address テーブル
+## shipping_addresses テーブル
 
-| shipping_address      | Type       | Options           |
+| Column                | Type       | Options           |
 | --------------------- | -----------| ------------------|
 | postal_code           | string     | null: false       |
 | delivery_source_id    | integer    | null: false       |
