@@ -42,12 +42,12 @@ Things you may want to cover:
 
 ### Association
 
-has_many :listing
+has_many :items
 has_many :purchase
 
-### listing
+### items テーブル
 
-| listing          | Type       | Options       |
+| items              | Type       | Options       |
 | ------------------ | -----------| ----------- |
 | image              | image      | null: false |
 | name               | string     | null: false |
@@ -64,7 +64,7 @@ has_many :purchase
 
 has_one  :users
 
-## purchase
+## purchase テーブル
 
 | purchase              | Type       | Options     |
 | --------------------- | -----------| ----------- |
@@ -79,7 +79,7 @@ has_one  :users
 has_one :users
 has_one :purchase  
 
-## purchase
+## purchase テーブル
 
 | shipping address      | Type       | Options     |
 | --------------------- | -----------| ----------- |
@@ -93,4 +93,4 @@ has_one :purchase
 
 ### Association
 
-has_one  :purchase
+belongs_to  :purchase
