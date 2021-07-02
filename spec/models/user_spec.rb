@@ -40,6 +40,21 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include ('Password is too short (minimum is 6 characters)')
     end
+    it 'passwordが英字だけでは登録できない' do
+      @user.password = 'aaaaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include ('Password is invalid')
+    end
+    it 'passwordが数字だけでは登録できない' do
+      @user.password = '111111'
+      @user.valid?
+      expect(@user.errors.full_messages).to include ('Password is invalid')
+    end
+    it 'passwordに全角が含まれている場合は登録できない' do
+      @user.password = 'あああ111'
+      @user.valid?
+      expect(@user.errors.full_messages).to include ('Password is invalid')
+    end
       it 'passwordとpassword_confirmationが6文字以上であれば登録できる' do
       @user.password = 'ab0000'
       @user.password_confirmation = 'ab0000'
@@ -50,20 +65,40 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include ("Last name full width can't be blank")
       end
+      it 'last_name_full_widthにバリデーションを満たさない場合は登録できない' do
+        @user.last_name_full_width = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include ('Last name full width is invalid')
+      end
       it 'first_name_full_widthが空では登録できない' do
         @user.first_name_full_width = ''
         @user.valid?
         expect(@user.errors.full_messages).to include ("First name full width can't be blank")
+      end
+      it 'first_name_full_widthにバリデーションを満たさない場合は登録できない' do
+        @user.first_name_full_width = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include ('First name full width is invalid')
       end
       it 'last_name_kana_full_widthが空では登録できない' do
         @user.last_name_kana_full_width = ''
         @user.valid?
         expect(@user.errors.full_messages).to include ("Last name kana full width can't be blank")
       end
+      it 'last_name_kana_full_widthにバリデーションを満たさない場合は登録できない' do
+        @user.last_name_kana_full_width = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include ('Last name kana full width is invalid')
+      end
       it 'first_name_kana_full_widthが空では登録できない' do
         @user.first_name_kana_full_width = ''
         @user.valid?
         expect(@user.errors.full_messages).to include ("First name kana full width can't be blank")
+      end
+      it 'first_name_kana_full_widthにバリデーションを満たさない場合は登録できない' do
+        @user.first_name_kana_full_width = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include ('First name kana full width is invalid')
       end
       it 'birthdayが空では登録できない' do
         @user.birthday = ''
