@@ -71,7 +71,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include ("Last name full width can't be blank")
       end
       it 'last_name_full_widthにバリデーションを満たさない場合は登録できない' do
-        @user.last_name_full_width = '111111'
+        @user.last_name_full_width = 'ﾃｽﾄ'
         @user.valid?
         expect(@user.errors.full_messages).to include ('Last name full width is invalid')
       end
@@ -81,7 +81,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include ("First name full width can't be blank")
       end
       it 'first_name_full_widthにバリデーションを満たさない場合は登録できない' do
-        @user.first_name_full_width = '111111'
+        @user.first_name_full_width = 'ﾃｽﾄ'
         @user.valid?
         expect(@user.errors.full_messages).to include ('First name full width is invalid')
       end
@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include ("Last name kana full width can't be blank")
       end
       it 'last_name_kana_full_widthにバリデーションを満たさない場合は登録できない' do
-        @user.last_name_kana_full_width = '111111'
+        @user.last_name_kana_full_width = 'ﾃｽﾄ'
         @user.valid?
         expect(@user.errors.full_messages).to include ('Last name kana full width is invalid')
       end
@@ -101,7 +101,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include ("First name kana full width can't be blank")
       end
       it 'first_name_kana_full_widthにバリデーションを満たさない場合は登録できない' do
-        @user.first_name_kana_full_width = '111111'
+        @user.first_name_kana_full_width = 'ﾃｽﾄ'
         @user.valid?
         expect(@user.errors.full_messages).to include ('First name kana full width is invalid')
       end
