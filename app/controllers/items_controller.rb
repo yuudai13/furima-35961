@@ -14,7 +14,7 @@ end
 
 private
 def items_params
-  prams.require(:items).permit(:name, :description, :category_id, :condition_id, :delivery_charge_id, :delivery_source_id, :shipping_days_id, :price).merge(user_id: curent_user.id)
+  prams.require(:items).permit(:image, :name, :description, :category_id, :condition_id, :delivery_charge_id, :delivery_source_id, :shipping_days_id, :price).merge(user_id: curent_user.id)
 end
 end
 
