@@ -14,10 +14,12 @@ validates :delivery_source_id, numericality: { other_than: 0 }
     validates :condition
     validates :delivery_charge
     validates :delivery_source
+    validates :shipping_day
   end
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :condition_id
     validates :delivery_charge_id
+    validates :shipping_day_id
   end
 end
