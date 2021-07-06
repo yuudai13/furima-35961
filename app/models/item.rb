@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
@@ -11,7 +10,7 @@ class Item < ApplicationRecord
   has_one :purchase
   has_one_attached :image
 
-#validates :delivery_source_id, numericality: { other_than: 0 }
+  # validates :delivery_source_id, numericality: { other_than: 0 }
 
   with_options presence: true do
     validates :image
@@ -36,7 +35,7 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  validates :price, numericality: {with: /\A\d+\z/}
-  validates :price, numericality: {greater_than_or_equal_to:	300 }
-  validates :price, numericality: {less_than_or_equal_to:	99999999 }
+  validates :price, numericality: { with: /\A\d+\z/ }
+  validates :price, numericality: { greater_than_or_equal_to:	300 }
+  validates :price, numericality: { less_than_or_equal_to:	99_999_999 }
 end
