@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_one :purchase
   has_one_attached :image
 
-  # validates :delivery_source_id, numericality: { other_than: 0 }
+# validates :delivery_source_id, numericality: { other_than: 0 }
 
   with_options presence: true do
     validates :image
@@ -28,7 +28,10 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :delivery_charge_id
     validates :shipping_day_id
-    validates :delivery_source_id
+  end
+
+  with_options numericality: { other_than: 0 } do
+   validates :delivery_source_id
   end
 
   with_options presence: true do
