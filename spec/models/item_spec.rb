@@ -30,7 +30,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include 'Category is not a number'
     end
     it 'category_idが1では登録できない' do
-      @item.category_id = '1'
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include 'Category must be other than 1'
     end
@@ -40,7 +40,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include 'Condition is not a number'
     end
     it 'condition_idが1では登録できない' do
-      @item.condition_id = '1'
+      @item.condition_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include 'Condition must be other than 1'
     end
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include 'Delivery charge is not a number'
     end
     it 'delivery_charge_idが1では登録できない' do
-      @item.delivery_charge_id = '1'
+      @item.delivery_charge_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include 'Delivery charge must be other than 1'
     end
@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include 'Delivery source is not a number'
     end
     it 'delivery_source_idが0では登録できない' do
-    @item.delivery_source_id = '0'
+    @item.delivery_source_id = 0
     @item.valid?
     expect(@item.errors.full_messages).to include 'Delivery source must be other than 0'
     end
@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include 'Shipping day is not a number'
     end
     it 'shipping_day_idが1では登録できない' do
-      @item.shipping_day_id = '1'
+      @item.shipping_day_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include 'Shipping day must be other than 1'
     end
@@ -87,7 +87,7 @@ RSpec.describe Item, type: :model do
     it 'priceが9999999より上の数値は登録できない' do
       @item.price = 100000000
       @item.valid?
-      expect(@item.errors.full_messages).to include "Price must be less than or equal to 99999999"
+      expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
     end
     it 'priceが半角数値のみ保存可能である' do
       @item.price = '５００'
