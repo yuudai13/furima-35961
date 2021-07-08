@@ -27,9 +27,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
+    @item = Item.find(params[:id])
+    if @item.update(items_params)
+      redirect_to @item
+    else
+      render :edit
   end
+end
   private
   def items_params
     params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :delivery_charge_id,
