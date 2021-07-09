@@ -29,15 +29,14 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(items_params)
-      redirect_to @item
+      redirect_to item_path
     else
       render :edit
     end
   end
   private
   def items_params
-    params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :delivery_charge_id,
-                                 :delivery_source_id, :shipping_day_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :delivery_charge_id, :delivery_source_id, :shipping_day_id, :price).merge(user_id: current_user.id)
   end
   def set_item
     @item = Item.find(params[:id])
