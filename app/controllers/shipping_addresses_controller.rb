@@ -1,6 +1,7 @@
 class ShippingAddressesController < ApplicationController
 
   def index
+    @item = Item.find(params[:item_id])
     @shipping_addresses = ShippingAddress.new
   end
 
@@ -17,6 +18,6 @@ class ShippingAddressesController < ApplicationController
   private
 
   def shipping_address_params
-    params.require(:order).permit(:price)
+    params.require(:shipping_address).permit(:name, :price, :image).merge(user_id: current_user.id)
   end
 end
