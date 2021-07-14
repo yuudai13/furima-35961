@@ -1,17 +1,14 @@
 class ShippingAddressesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
-    if @item.user.id == current_user.id
-      redirect_to root_path
-    else
     @item_shipping_addresses = FormObject.new
     end
   end
   
   def create
-    @item = Item.find(params[:item_id])
     @item_shipping_addresses = FormObject.new(shipping_address_params)
     if @item_shipping_addresses.valid?
       pay_item
@@ -36,5 +33,13 @@ class ShippingAddressesController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
  end
+
+def set_item
+  @item = Item.find(params[:item_id])
+end
+def move_to_index
+  if @item.user.id == current_user.id || @item.purchase != nil
+    redirect_to root_path
+end
 
 end
