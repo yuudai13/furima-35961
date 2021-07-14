@@ -6,7 +6,6 @@ class ShippingAddressesController < ApplicationController
   def index
     @item_shipping_addresses = FormObject.new
     end
-  end
   
   def create
     @item_shipping_addresses = FormObject.new(shipping_address_params)
@@ -37,9 +36,10 @@ class ShippingAddressesController < ApplicationController
 def set_item
   @item = Item.find(params[:item_id])
 end
+
 def move_to_index
   if @item.user.id == current_user.id || @item.purchase != nil
     redirect_to root_path
-end
-
+  end
+ end
 end
