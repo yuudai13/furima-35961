@@ -64,7 +64,7 @@ has_many :purchases
 belongs_to :user
 has_one :purchase
 
-## purchases
+## purchases テーブル
 
 | Column                | Type       | Options           |
 | --------------------- | -----------| ----------------- |
