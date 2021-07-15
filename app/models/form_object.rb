@@ -1,6 +1,6 @@
 class FormObject
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :postal_code, :delivery_source_id, :municipalities, :address, :building_name, :phone_number, :purchase_id, :token
+  attr_accessor :item_id, :user_id, :postal_code, :delivery_source_id, :municipalities, :address, :building_name, :phone_number, :token
 
 
   with_options presence: true do
@@ -20,7 +20,7 @@ class FormObject
 
   def save
    purchase = Purchase.create(item_id: item_id, user_id: user_id)
-   ShippingAddress.create(postal_code: postal_code, delivery_source_id: delivery_source_id, municipalities: municipalities, address: address, building_name: building_name, phone_number: phone_number)
+   ShippingAddress.create(postal_code: postal_code, delivery_source_id: delivery_source_id, municipalities: municipalities, address: address, building_name: building_name, phone_number: phone_number, purchase_id: purchase.id)
   end
  end
 
