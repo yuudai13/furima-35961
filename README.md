@@ -44,6 +44,7 @@ Things you may want to cover:
 
 has_many :items
 has_many :purchases
+has_many :message
 
 ### items テーブル
 
@@ -63,6 +64,7 @@ has_many :purchases
 
 belongs_to :user
 has_one :purchase
+has_many :message
 
 ## purchases テーブル
 
@@ -92,3 +94,16 @@ belongs_to :item
 ### Association
 
 belongs_to  :purchase
+
+## message テーブル
+
+| Column                | Type       | Options           |
+| --------------------- | -----------| ------------------|
+| message               | text       |                   |
+| user                  | references | foreign_key: true |
+| item                  | references | foreign_key: true |
+
+### Association
+
+belongs_to :user
+belongs_to :item
