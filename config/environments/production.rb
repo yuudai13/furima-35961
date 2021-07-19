@@ -29,8 +29,8 @@ Rails.application.configure do
   config.assets.compile = false
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = "wss://【furima-35961】.herokuapp.com/cable" 
-  config.action_cable.allowed_request_origins = ['https://【furima-35961】.herokuapp.com', 'http://【Herokuアプリ名】.herokuapp.com']
+  config.action_cable.url = "wss://furima-35961.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://furima-35961.herokuapp.com', 'http://【Herokuアプリ名】.herokuapp.com']
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
