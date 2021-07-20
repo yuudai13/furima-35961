@@ -13,7 +13,7 @@ class FormObject
     validates :phone_number
     validates :token
   end
-  validates :delivery_source_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :delivery_source_id, numericality: {other_than: 0}
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/}
   validates :phone_number, numericality: true
   validates :phone_number, length: {minimum: 10, maximum: 11 }

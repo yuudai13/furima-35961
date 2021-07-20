@@ -18,6 +18,16 @@ ja:
         delivery_source_id: 発送元の地域
         shipping_day_id: 発送までの日数
         price: 販売価格
+  activemodel:
+    attributes:
+      form_object:
+        postal_code: 郵便番号
+        delivery_source_id: 都道府県
+        municipalities: 市区町村
+        address: 番地
+        building_name: 建物名
+        phone_number: 電話番号
+        token: クレジットカード情報
 
 
 
